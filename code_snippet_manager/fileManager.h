@@ -1,16 +1,27 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include "json.hpp"
+#include <vector>
+#include "snippetData.h"
+#include <ifstream>
 
-using json = nlohmann::json;
+class fileManager {
 
-int main() {
-    json j;
-    j["name"] = "Lewis Hamilton";
-    j["team"] = "Mercedes";
-    j["titles"] = 7;
+	private:
 
-    std::cout << j.dump(4) << std::endl; // pretty-print
-}
+	std::string file;
+	std::vector <SnippetData> snippets;
 
+	public:
+
+		fileManager(std::string file = "snippets.json");
+		~fileManager();
+
+	private:
+
+		void loadFromFile();
+
+
+
+
+};

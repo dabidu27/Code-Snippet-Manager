@@ -6,12 +6,14 @@
 #include "fileManager.h"
 #include <sstream>
 #include <algorithm>
+#include <set>
 
 void showMenu() {
     std::cout << "\n==== Code Snippet Manager ====\n";
     std::cout << "1. Add a snippet\n";
     std::cout << "2. View all snippets\n";
-    std::cout << "3. Exit\n";
+    std::cout << "3. Filter snippets\n";
+    std::cout << "4. Exit\n";
     std::cout << "> ";
 }
 
@@ -74,9 +76,46 @@ int main() {
             }
         }
         else if (choice == 3) {
+
+            std::vector<SnippetData> all_snippets = fm.getSnippets();
+            if (all_snippets.empty()) {
+
+                std::cout << std::endl << "No snippets available to filter";
+                continue;
+            }
+            
+            std::cout << std::endl << "Filter by: ";
+            std::cout << std::endl << "1. Language";
+            std::cout << std::endl << "2. Tag";
+
+            int filter_choice = 0;
+            std::cin >> filter_choice;
+            std::cin.ignore();
+
+            std::vector<SnippetData> filtered;
+
+            if (filter_choice == 1) {
+
+                sm.filterByLanguage(all_snippets, filtered);
+            }
+
+            else if (filter_choice == 2) {
+
+                sm.filterByTag(all_snippets, filtered);
+            }
+            else {
+                std::cout << std::endl << "Invalid filter choice";
+            }
+            if (filtered.empty())
+                std::cout << std::endl << "No snippets found for this filter";
+            else
+                sm.showSnippets(filtered);
+        }
+        else if (choice == 4) {
             std::cout << std::endl << "Exiting";
             break;
         }
+
         else {
             std::cout << std::endl << "Invalid choice.";
         }

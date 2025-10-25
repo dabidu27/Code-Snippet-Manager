@@ -1,0 +1,74 @@
+[
+    {
+        "code": "for(int i = 0; i<n; i++) cout << i ",
+        "language": "English",
+        "tags": [
+            "Loop",
+            "for"
+        ],
+        "title": "My first snippet"
+    },
+    {
+        "code": "for(int i = 0; i<n; i++) cout << i ",
+        "language": "English",
+        "tags": [
+            "Loop",
+            "for"
+        ],
+        "title": "My second snippet"
+    },
+    {
+        "code": "for(int i = 0; i<n; i++) cout << i ",
+        "language": "English",
+        "tags": [
+            "Loop",
+            "for"
+        ],
+        "title": "My first snippet"
+    },
+    {
+        "code": "for(int i = 0; i<n; i++) cout << i ",
+        "language": "English",
+        "tags": [
+            "Loop",
+            "for"
+        ],
+        "title": "My second snippet"
+    },
+    {
+        "code": "for(int i = 0; i<n; i++) cout << i ",
+        "language": "English",
+        "tags": [
+            "Loop",
+            "for"
+        ],
+        "title": "My first snippet"
+    },
+    {
+        "code": "for(int i = 0; i<n; i++) cout << i ",
+        "language": "English",
+        "tags": [
+            "Loop",
+            "for"
+        ],
+        "title": "My second snippet"
+    },
+    {
+        "code": "for(int i = 0; i<n; i++) cout << i ",
+        "language": "English",
+        "tags": [
+            "Loop",
+            "for"
+        ],
+        "title": "My first snippet"
+    },
+    {
+        "code": "for(int i = 0; i<n; i++) cout << i ",
+        "language": "English",
+        "tags": [
+            "Loop",
+            "for"
+        ],
+        "title": "My second snippet"
+    }
+]

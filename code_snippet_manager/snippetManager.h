@@ -13,7 +13,8 @@ class snippetManager {
 
 	public:
 		snippetManager(std::string title, std::string lang, std::string code, std::vector<std::string> tags);
-		void addSnippet();
-		void showSnippets();
+		snippetManager() = default;
+		void showSnippets(std::vector<SnippetData> snippets);
+		std::vector<SnippetData> getSnippets();
 
 };

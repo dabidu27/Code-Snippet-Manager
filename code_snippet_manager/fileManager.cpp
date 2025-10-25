@@ -15,12 +15,12 @@ fileManager::fileManager(std::string filename) {
 
 }
 
-fileManager::~fileManager() {
+/*fileManager::~fileManager() {
 
 	saveToFile();
 	std::cout << std::endl << "File Manager: Saved snippets to " << this->filename;
 
-}
+}*/
 
 void fileManager::loadFromFile() {
 
@@ -47,25 +47,43 @@ void fileManager::loadFromFile() {
 }
 
 void fileManager::saveToFile() {
+  
+    std::ifstream inFile(this->filename);
+    json j_existing = json::array();
 
-	json j_snippets = json::array();
-	for (const auto& s : snippets) {
+    if (inFile.is_open()) {
+        try {
+            inFile >> j_existing;
+        }
+        catch (...) {
+            std::cerr << "\nWarning: Could not parse existing JSON, starting fresh.";
+        }
+    }
+    inFile.close();
 
-		j_snippets.push_back({
-		   {"title", s.title},
-		   {"language", s.lang},
-		   {"code", s.code},
-		   {"tags", s.tags}
-			});
-	}
+    json j_new = json::array();
+    for (const auto& s : snippets) {
+        j_new.push_back({
+            {"title", s.title},
+            {"language", s.lang},
+            {"code", s.code},
+            {"tags", s.tags}
+            });
+    }
 
-	std::ofstream file(this->filename);
-	if (!file.is_open()) {
-		std::cerr << std::endl << "Warning: Could not open " << this->filename << " for writing";
-		return;
-	}
+    for (const auto& snip : j_new) {
+        j_existing.push_back(snip);
+    }
 
-	file << j_snippets.dump(4);
+    std::ofstream outFile(this->filename);
+    if (!outFile.is_open()) {
+        std::cerr << "\nWarning: Could not open " << this->filename << " for writing";
+        return;
+    }
+
+    outFile << j_existing.dump(4);
+
+    snippets.clear();
 }
 
 std::vector<SnippetData> fileManager::getSnippets() {

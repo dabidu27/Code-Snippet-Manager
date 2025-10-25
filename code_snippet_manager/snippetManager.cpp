@@ -10,15 +10,11 @@ snippetManager::snippetManager(std::string title, std::string lang, std::string 
 	this->snippet.lang = lang;
 	this->snippet.code = code;
 	this->snippet.tags = tags;
-
-}
-
-void snippetManager::addSnippet() {
-
 	snippets.push_back(this->snippet);
+
 }
 
-void snippetManager::showSnippets() {
+void snippetManager::showSnippets(std::vector<SnippetData> snippets) {
 	
 	for (const auto& s : snippets) {
 		
@@ -27,4 +23,10 @@ void snippetManager::showSnippets() {
 			std::cout << tag << " ";
 		}
 	}
+}
+
+
+std::vector<SnippetData>snippetManager::getSnippets() {
+
+	return snippets;
 }

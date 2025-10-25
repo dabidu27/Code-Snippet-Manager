@@ -1,9 +1,10 @@
 #pragma once
+#pragma once
 #include <string>
 #include <iostream>
 #include <vector>
 #include "snippetData.h"
-#include <ifstream>
+#include <fstream>
 
 class fileManager {
 
@@ -15,13 +16,13 @@ class fileManager {
 	public:
 
 		fileManager(std::string file = "snippets.json");
-		~fileManager();
+		//~fileManager();
 		std::vector<SnippetData> getSnippets();
 		void setSnippets(std::vector<SnippetData> newSnippets);
+		void saveToFile();
 
 	private:
 
 		void loadFromFile();
-		void saveToFile();
 
 };

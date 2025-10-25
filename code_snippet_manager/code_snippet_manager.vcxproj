@@ -134,6 +134,7 @@
     <ClInclude Include="snippetManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="fileManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="snippetManager.cpp" />

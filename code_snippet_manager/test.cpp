@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "snippetManager.h"
+#include "fileManager.h"
 using namespace std;
 
 
@@ -10,18 +11,12 @@ using namespace std;
 
 int main() {
 
-	std::string title = "My first snippet";
-	std::string lang = "English";
-	std::string code = "for(int i = 0; i<n; i++) cout << i ";
-	std::vector <std::string> tags;
-	std::string tag1 = "Loop";
-	std::string tag2 = "for";
-	tags.push_back(tag1);
-	tags.push_back(tag2);
+	fileManager fm("snippets.json");
 
-	snippetManager snippet = snippetManager(title, lang, code, tags);
-	snippet.addSnippet();
-	snippet.showSnippets();
+	snippetManager snippet2;
+
+	std::vector<SnippetData> snippet = fm.getSnippets();
+	snippet2.showSnippets(snippet);
 
 	return 0;
 }

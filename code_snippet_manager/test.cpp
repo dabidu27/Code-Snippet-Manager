@@ -1,4 +1,5 @@
 #include <iostream>
+#include "json.hpp"
 #include <string>
 #include <vector>
 #include "snippetManager.h"

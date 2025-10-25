@@ -1,74 +1,19 @@
 [
     {
-        "code": "for(int i = 0; i<n; i++) cout << i ",
-        "language": "English",
+        "code": "for",
+        "language": "C++",
         "tags": [
-            "Loop",
-            "for"
+            "loop"
         ],
-        "title": "My first snippet"
+        "title": "for loop"
     },
     {
-        "code": "for(int i = 0; i<n; i++) cout << i ",
-        "language": "English",
+        "code": "while(true)",
+        "language": "C++",
         "tags": [
-            "Loop",
-            "for"
+            "while",
+            "loop"
         ],
-        "title": "My second snippet"
-    },
-    {
-        "code": "for(int i = 0; i<n; i++) cout << i ",
-        "language": "English",
-        "tags": [
-            "Loop",
-            "for"
-        ],
-        "title": "My first snippet"
-    },
-    {
-        "code": "for(int i = 0; i<n; i++) cout << i ",
-        "language": "English",
-        "tags": [
-            "Loop",
-            "for"
-        ],
-        "title": "My second snippet"
-    },
-    {
-        "code": "for(int i = 0; i<n; i++) cout << i ",
-        "language": "English",
-        "tags": [
-            "Loop",
-            "for"
-        ],
-        "title": "My first snippet"
-    },
-    {
-        "code": "for(int i = 0; i<n; i++) cout << i ",
-        "language": "English",
-        "tags": [
-            "Loop",
-            "for"
-        ],
-        "title": "My second snippet"
-    },
-    {
-        "code": "for(int i = 0; i<n; i++) cout << i ",
-        "language": "English",
-        "tags": [
-            "Loop",
-            "for"
-        ],
-        "title": "My first snippet"
-    },
-    {
-        "code": "for(int i = 0; i<n; i++) cout << i ",
-        "language": "English",
-        "tags": [
-            "Loop",
-            "for"
-        ],
-        "title": "My second snippet"
+        "title": "while loop"
     }
 ]

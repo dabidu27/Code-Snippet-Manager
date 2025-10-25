@@ -22,6 +22,7 @@ void snippetManager::showSnippets(std::vector<SnippetData> snippets) {
 		for (const auto& tag : s.tags) {
 			std::cout << tag << " ";
 		}
+		std::cout << std::endl;
 	}
 }
 

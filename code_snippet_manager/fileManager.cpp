@@ -47,43 +47,25 @@ void fileManager::loadFromFile() {
 }
 
 void fileManager::saveToFile() {
-  
-    std::ifstream inFile(this->filename);
-    json j_existing = json::array();
+	json j_new = json::array();
 
-    if (inFile.is_open()) {
-        try {
-            inFile >> j_existing;
-        }
-        catch (...) {
-            std::cerr << "\nWarning: Could not parse existing JSON, starting fresh.";
-        }
-    }
-    inFile.close();
+	for (const auto& s : snippets) {
+		j_new.push_back({
+			{"title", s.title},
+			{"language", s.lang},
+			{"code", s.code},
+			{"tags", s.tags}
+			});
+	}
 
-    json j_new = json::array();
-    for (const auto& s : snippets) {
-        j_new.push_back({
-            {"title", s.title},
-            {"language", s.lang},
-            {"code", s.code},
-            {"tags", s.tags}
-            });
-    }
+	std::ofstream outFile(this->filename);
+	if (!outFile.is_open()) {
+		std::cerr << "\nWarning: Could not open " << this->filename << " for writing";
+		return;
+	}
 
-    for (const auto& snip : j_new) {
-        j_existing.push_back(snip);
-    }
-
-    std::ofstream outFile(this->filename);
-    if (!outFile.is_open()) {
-        std::cerr << "\nWarning: Could not open " << this->filename << " for writing";
-        return;
-    }
-
-    outFile << j_existing.dump(4);
-
-    snippets.clear();
+	outFile << j_new.dump(4);
+	outFile.close();
 }
 
 std::vector<SnippetData> fileManager::getSnippets() {

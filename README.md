@@ -49,12 +49,19 @@ The app uses a modular OOP design for clarity and scalability:
 ## Project Structure
 
 /code_snippet_manager/
+
 ├── main.cpp # Entry point (CLI menu)
+
 ├── snippetData.h # Struct for snippet info
+
 ├── snippetManager.h/.cpp # Handles snippet operations
+
 ├── fileManager.h/.cpp # Handles JSON persistence
+
 ├── json.hpp # nlohmann/json library (header-only)
+
 ├── snippets.json # Generated JSON data file
+
 └── README.md # Project documentation
 
 

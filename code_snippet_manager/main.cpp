@@ -10,11 +10,13 @@
 
 void showMenu() {
     std::cout << "\n==== Code Snippet Manager ====\n";
-    std::cout << "1. Add a snippet\n";
-    std::cout << "2. View all snippets\n";
-    std::cout << "3. Filter snippets\n";
-    std::cout << "4. Exit\n";
-    std::cout << "> ";
+    std::cout << std::endl << "1. Add a snippet";
+    std::cout << std::endl << "2. View all snippets";
+    std::cout << std::endl << "3. Filter snippets";
+    std::cout << std::endl << "4. Edit a snippet";
+    std::cout << std::endl << "5. Delete a snippet";
+    std::cout << std::endl << "6. Exit";
+    std::cout << std::endl << "> ";
 }
 
 int main() {
@@ -111,7 +113,26 @@ int main() {
             else
                 sm.showSnippets(filtered);
         }
+
         else if (choice == 4) {
+
+            auto snippets = fm.getSnippets();
+            sm.editSnippet(snippets);
+            fm.setSnippets(snippets);
+            fm.saveToFile();
+
+        }
+
+        else if (choice == 5) {
+
+            auto snippets = fm.getSnippets();
+            sm.deleteSnippet(snippets);
+            fm.setSnippets(snippets);
+            fm.saveToFile();
+
+        }
+
+        else if (choice == 6) {
             std::cout << std::endl << "Exiting";
             break;
         }

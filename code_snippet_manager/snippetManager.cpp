@@ -3,6 +3,7 @@
 #include <vector>
 #include "snippetManager.h"
 #include <set>
+#include <sstream>
 
 
 snippetManager::snippetManager(std::string title, std::string lang, std::string code, std::vector<std::string> tags) {
@@ -85,5 +86,89 @@ void snippetManager::filterByTag(std::vector<SnippetData> all_snippets, std::vec
 			}
 
 	}
+}
 
+void snippetManager::editSnippet(std::vector<SnippetData>& snippets) {
+	if (snippets.empty()) {
+		std::cout << "\nNo snippets to edit.\n";
+		return;
+	}
+
+	std::cout << "\nAvailable snippets:\n";
+	for (size_t i = 0; i < snippets.size(); ++i) {
+		std::cout << i + 1 << ". " << snippets[i].title << "\n";
+	}
+
+	std::cout << "\nEnter snippet number to edit: ";
+	int choice;
+	std::cin >> choice;
+	std::cin.ignore();
+
+	if (choice < 1 || choice >(int)snippets.size()) {
+		std::cout << "Invalid choice.\n";
+		return;
+	}
+
+	SnippetData& s = snippets[choice - 1];
+
+	std::cout << "\nEditing snippet: " << s.title << "\n";
+
+	std::string newTitle, newLang, newCode;
+	std::vector<std::string> newTags;
+	std::string tagInput;
+
+	std::cout << "New title (leave empty to keep current): ";
+	getline(std::cin, newTitle);
+	if (!newTitle.empty()) s.title = newTitle;
+
+	std::cout << "New language (leave empty to keep current): ";
+	getline(std::cin, newLang);
+	if (!newLang.empty()) s.lang = newLang;
+
+	std::cout << "New code (leave empty to keep current): ";
+	getline(std::cin, newCode);
+	if (!newCode.empty()) s.code = newCode;
+
+	std::cout << "New tags (comma separated, leave empty to keep current): ";
+	getline(std::cin, tagInput);
+
+	if (!tagInput.empty()) {
+		newTags.clear();
+		tagInput.erase(remove_if(tagInput.begin(), tagInput.end(), ::isspace), tagInput.end());
+		std::stringstream ss(tagInput);
+		std::string tag;
+		while (getline(ss, tag, ',')) {
+			if (!tag.empty()) newTags.push_back(tag);
+		}
+		s.tags = newTags;
+	}
+
+	std::cout << "\nSnippet updated successfully.\n";
+}
+
+void snippetManager::deleteSnippet(std::vector<SnippetData>& snippets) {
+	if (snippets.empty()) {
+		std::cout << "\nNo snippets to delete.\n";
+		return;
+	}
+
+	std::cout << "\nAvailable snippets:\n";
+	for (size_t i = 0; i < snippets.size(); ++i) {
+		std::cout << i + 1 << ". " << snippets[i].title << "\n";
+	}
+
+	std::cout << "\nEnter snippet number to delete: ";
+	int choice;
+	std::cin >> choice;
+	std::cin.ignore();
+
+	if (choice < 1 || choice >(int)snippets.size()) {
+		std::cout << "Invalid choice.\n";
+		return;
+	}
+
+	std::cout << "Deleting: " << snippets[choice - 1].title << "\n";
+	snippets.erase(snippets.begin() + (choice - 1));
+
+	std::cout << "Snippet deleted successfully.\n";
 }

@@ -18,5 +18,7 @@ class snippetManager {
 		std::vector<SnippetData> getSnippets();
 		void filterByLanguage(std::vector<SnippetData> all_snippets, std::vector<SnippetData>& filtered);
 		void filterByTag(std::vector<SnippetData> all_snippets, std::vector<SnippetData>& filtered);
+		void editSnippet(std::vector<SnippetData>& snippets);
+		void deleteSnippet(std::vector<SnippetData>& snippets);
 
 };

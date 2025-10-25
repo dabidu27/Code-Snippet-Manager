@@ -1,13 +1,5 @@
 [
     {
-        "code": "for",
-        "language": "C++",
-        "tags": [
-            "loop"
-        ],
-        "title": "for loop"
-    },
-    {
         "code": "while(true)",
         "language": "C++",
         "tags": [

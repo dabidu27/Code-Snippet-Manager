@@ -9,19 +9,19 @@ class fileManager {
 
 	private:
 
-	std::string file;
+	std::string filename;
 	std::vector <SnippetData> snippets;
 
 	public:
 
 		fileManager(std::string file = "snippets.json");
 		~fileManager();
+		std::vector<SnippetData> getSnippets();
+		void setSnippets(std::vector<SnippetData> newSnippets);
 
 	private:
 
 		void loadFromFile();
-
-
-
+		void saveToFile();
 
 };
